@@ -1,0 +1,24 @@
+{% extends 'blog/index.html' %}
+
+{% load staticfiles %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/tag_index.css' %}"/>
+{% endblock css %}
+
+{% block body %}
+<div class="tag-cloud">
+	<div class="tag-cloud-title">
+		<p>TOTAL OF <b>{{tags_num}}</b> TAGS</p> 
+	</div>
+
+	<div class="tag-cloud-tags">
+	{% for tag in tags %}
+		<a href="{%url 'blog:tag-with-page' slug=tag.slug page=1%}" style="color: #ccc;">{{tag.name}}</a>
+	{% endfor %}
+	</div>
+	
+</div>
+{% endblock %}
+
+<!-- {%url 'blog:tag-with-page' slug='tag.slug' %} -->

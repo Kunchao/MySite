@@ -1,0 +1,25 @@
+{% extends 'blog/index.html' %}
+
+{% load staticfiles %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/tag_index.css' %}">
+{% endblock css%}
+
+{% block body %}
+<div class="tag-cloud">
+	<div class="tag-cloud-title">
+		<p>TOTAL OF <b>{{cate_num}}</b> CATEGORYS</p> 
+	</div>
+
+	<div class="tag-cloud-tags">
+	{% for category_len in category_len_list %}
+		{%for category in categorys %}
+		<a href="{%url 'blog:category-with-page' slug=category.slug page=1%}" style="color: #ccc;">{% endfor %}
+		<span class="glyphicon glyphicon-map-marker" style="font-size: 18px"></span>
+		{{category_len.name}}({{category_len.len}})</a>
+	{% endfor %}
+	</div>
+	
+</div>
+{% endblock %}

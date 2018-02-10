@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+    <title>Vapor|Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/base_site.css' %}">
+    {% block css %}
+    {% endblock css %}
+<style>
+
+</style>
+<!--[if lt IE 9]>
+   <script src="https://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+</head>
+<body>
+   
+   <nav class="navbar navbar-default " role="navigation">
+      <div class="container-fluid">
+         <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+               <span class="sr-only">切换导航</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+           </button>
+            <a class="navbar-brand" href="{%url 'blog:index' %}">VAPOR</a>
+         </div>
+         <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+               <li class="active"><a href="{%url 'blog:index' %}">Home</a></li>
+               <li class="dropdown">
+                  <a class="dropdown-toggle  fade in active" data-toggle="dropdown" href="#">Blog<span class="caret"></span></a>
+                  <ul class="dropdown-menu ">
+                     <li><a href="{%url 'blog:index' %}">Vapor</a></li>
+                     <!-- <li class="divider"></li> -->
+                  </ul>
+               </li>
+               <li><a href="{% url 'blog:category' %}">Category</a></li>
+               <li><a href="{%url 'blog:tag' %}">Tags</a></li>
+               <li><a href="{% url 'blog:archive_year_archive' 2017 %}">Archives</a></li>
+                <li><a href="{%url 'blog:about' %}">About</a></li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+               <div class="form-group">
+                  <form id="search-form" method="GET" action="/search/" onsubmit="return search_validator(this)" type="text" placeholder="search">
+               </div>
+
+               <!-- <button type="sumbit" class="btn btn-default">sumbit</button> -->
+            </form>
+         </div>
+      </div>
+      </nav>
+
+      <div class="jumbotron">
+          <div class="container">
+              <h1>Vapor | Blog</h1>
+              <p>Thoughts, stories and ideas.</p>
+          </div>
+      </div>
+
+   <main>
+     <div id="main">
+     	{% block body %}
+     	
+     	{% endblock %}
+     </div>
+   </main>
+
+<footer>
+  <div id="foot" class="slide">
+     <div class="bg-image"></div>
+     <div class="content">
+     <div class="form">
+        <form action="" method="post">
+			{% csrf_token %}
+			<!-- {{ form.non_field_errors }} -->
+        	
+			<p for="{{ form.message.id_for_p }}">{{ form.message }}</p>
+			{{ form.message.errors }}
+			<p for="{{ form.name.id_for_p }}">{{ form.name }}</p>
+			{{ form.name.errors }}
+			<p for="{{ form.sender.id_for_p }}">{{ form.sender }}</p>	
+        	{{ form.sender.errors }}
+			<p for="{{ form.subject.id_for_p }}">{{ form.subject }}</p>
+			{{ form.subject.errors }}
+        <input type="submit" value="{{result}}">
+        </form>
+        {% if form.errors %}
+				<p style="color: red;">
+				Please correct the error above.
+				</p>
+			{% endif %}
+     </div>
+     <div class="info-contacto">
+     <h2>———<span>E-MAIL</span>———</h2>
+        <p>Vapor@google.me</p>
+    </div>
+    <div class="footer-line">
+    	<p>
+  Copyright © 2017 - Vapor - powered by <a href="https://www.djangoproject.com/" style="color: #333;text-decoration: none;">Django</a>
+  </p>
+    </div>
+     </div>
+
+  </div>
+</footer>
+        <!-- <div class="icon-wall">
+        	<img src="{% static 'blog/image/s1.png' %}">
+        </div> -->  
+<!-- jQuery (Bootstrap 插件需要引入) -->
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- 包含了所有编译插件 -->
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script >
+   var form=document.getElementsByClassName('mensaje');
+   var form1=document.getElementsByClassName('form');
+   var input1=form1[0].getElementsByTagName('input');
+   form[0].innerHTML='MESSAGE:'
+   form[0].onfocus=function(){
+      this.innerHTML='';
+   }
+   form[0].onblur=function(){
+   	fillText()
+   }
+   input1[1].onblur=function(){
+      if(input1[1].value==''){
+      fillText()
+   	}
+   }
+   input1[2].onblur=function(){
+      if(input1[2].value==''){
+      fillText()
+   	}
+   }
+   input1[3].onblur=function(){
+   	if(input1[3].value==''){
+      fillText()
+   	}
+   }
+   form[0].onblur=function(){
+      fillText()
+   }
+   function fillText(){
+      form[0].innerHTML='MESSAGE:'
+      input1[1].value='NAME:'
+      input1[2].value='xxx@example.com'
+      input1[3].value='SUBJECT:'
+   }
+   var foot=document.getElementById('foot');
+   foot.onclick=function(e){
+      var target=e.target;
+      if(target.tagName=='INPUT'){
+         target.value=''
+      }
+   }
+   var error=document.getElementsByClassName('errorlist')[0]
+
+</script>   
+</body>
+</html>
+
+
+
+

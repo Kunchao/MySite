@@ -1,0 +1,30 @@
+body {
+    position: relative;
+    font-size: 14px;
+    line-height: 2;
+    color: #555;
+    background: #fff;
+}
+
+.post-container {
+	display: table;
+	width: 80%;
+	max-width: 750px;
+	margin: 0 auto;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+a {
+    color: #555;
+    text-decoration: none;
+}

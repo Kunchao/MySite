@@ -1,0 +1,48 @@
+{% extends "blog/base_site.html" %}
+
+{% load staticfiles %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/index.css' %}">
+{% endblock css %}
+
+{% block body %}
+	<div class="post-list">
+	<div class="tag-header">
+			<a href=""><span class="glyphicon glyphicon-tags" style="font-size: 18px"></span>&nbsp{{tag}}</a>
+	</div>
+	{% for post in posts %}
+		<article class="post per-page">
+			<header class="post-header">
+				<h2><a href="{%url 'blog:post' post.slug %}">{{ post.title }}</a></h2>
+				<span class="glyphicon glyphicon-user"></span>
+				<a href="#">{{ post.author.nickname }}</a>
+				&nbspon&nbsp
+				{% if post.category %}
+					<a href="#">{{ post.category.name}}</a>
+				{% else %}
+				<a >未分类</a>
+				{% endif %}
+
+				<time class="post-date" datetime="{{post.pub_date|date:"Y-m-d"}}">{{post.pub_date|date:"Y-m-d"}}</time>
+			</header>
+			<section class="post-excerpt">
+				<p>{{ post.content|truncatechars:200 }}</p>
+				<div class="read-more" ><a href="{%url 'blog:post' post.slug %}">READ MORE</a></div>
+			</section>
+		</article>
+		{% endfor %}
+		<div class="page-turn">
+			<ul class="pager">
+			 {% if page != 1 %}
+		         <li class="previous"><a href="{% block lat_page_url %}{% url 'blog:index-with-page' page=page|add:'-1' %}{% endblock %}">&larr; Newer Posts</a></li>
+		         	<a href=></a>
+		      {% endif %}
+		         	{{page}}/{{max_page}}
+		     {% if page != max_page %}
+		         <li class="next"><a href="{% block next_page_url %}{% url 'blog:index-with-page' page=page|add:'1' %}{% endblock %}">Older Posts &rarr;</a></li>
+		     {% endif %}
+		</ul>
+		</div>
+	</div>
+{% endblock %}

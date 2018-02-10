@@ -1,0 +1,147 @@
+body{
+	line-height: 2;
+	color: #555;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 20px 0 10px;
+}
+.archives-contianer {
+	display: table;
+	width: 80%;
+	max-width: 750px;
+	margin: 0 auto;
+	padding-top: 80px;
+}
+
+.post-collapse {
+	position: relative;
+	margin-left: 0px;
+}
+
+.post-collapse::after {
+	top: 20px;
+	left: 0px;
+	margin-left: -2px;
+	width: 4px;
+	height: 100%;
+	background: #f5f5f5;
+	z-index: -1
+}
+.post-collapse::before, 
+.post-collapse::after {
+    content: " ";
+    position: absolute;
+}
+
+.archive-move-on {
+	position: absolute;
+	top: 11px;
+	left: 0;
+	margin-left: -6px;
+	width: 10px;
+	height: 10px;
+	opacity: 0.5;
+	background: #555;
+	border: 1px solid #fff;
+	border-radius: 50%;
+}
+.archive-move-on:hover {
+	background: #000;
+}
+.archive-year:hover {
+	color: #000;
+}
+.archive-page-counter:hover {
+	color: #000;
+}
+
+@media (max-width: 767px)
+body {
+	font-size: 14px;
+}
+
+.archive-page-counter {
+	position:relative;
+	top: 3px;
+	left: 20px;
+	font-size: 16px;
+}
+
+@media (max-width: 767px)
+.archive-page-counter {
+	top: 5px;
+}
+.archive-year {
+	margin-left: 20px;
+}
+
+.collection-title {
+	position: relative;
+	margin: 60px 0;
+}
+
+.post-collapse 
+.post {
+	margin: 30px 0px;
+}
+
+.post-collapse
+.post-header {
+	position: relative;
+	transition: 0.2s;
+	transition-timing-function: ease-in-out;
+	transition-delay: 0s;
+	transition-property: border;
+	border-bottom: 1px dashed #ccc; 
+}
+
+.post-collapse
+.post-header:hover {
+	color: #000;
+	border-bottom: 1px dashed #000;
+}
+.post-collapse
+.post-header:hover::before {
+	background: #000;
+}
+.post-collapse .post-title a {
+    color: #666;
+    border-bottom: none;
+}
+
+.post-collapse .post-header::before {
+    content: "  ";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    background: #bbb;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    transition-property: background;
+}
+.post-collapse .post-title {
+    margin-left: 80px;
+    font-size: 17px;
+    font-weight: normal;
+    font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: inherit;
+}
+.post-collapse .post-meta {
+    position: absolute;
+    font-size: 12px;
+    left: 20px;
+    top: 3px;
+}
+@media (max-width: 767px)
+.post-collapse .post-title, 
+.post-collapse .post-meta {
+    display: block;
+    width: auto;
+    text-align: left;
+}

@@ -1,0 +1,86 @@
+{% extends "blog/base_site.html" %}
+
+{% load staticfiles %}
+
+{% block meta %}
+    <meta name="author" content="{{ post.author }}">
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/post.css' %}">
+{% endblock %}
+
+{% block body %}
+ <div class="post-container">
+
+         <article class="post">
+	         <!-- <span class="label label-default">默认标签</span>
+	         <span class="label label-primary">主要标签</span>
+	         <span class="label label-success">成功标签</span>
+	         <span class="label label-info">信息标签</span>
+	         <span class="label label-warning">警告标签</span>
+	         <span class="label label-danger">危险标签</span> -->
+	         
+	        <header class="post-prim">
+				<h1 id="title">{{post.title}}</h1>
+			<section class="post-meta">
+				<time class="post-date" datetime="{{post.pub_date|date:"Y-m-d"}}">{{post.pub_date|date:"Y-m-d"}}</time> on 
+				{% if post.category %}
+					<a href="#" >{{ post.category.name}}</a><br>
+				{% else %}
+				<a >未分类</a><br>
+				{% endif %}
+			</section>
+				
+			</header>
+			
+			<section id="content">{{post.content}}</section><br>
+
+
+
+			<ul class="pager">
+			 {% if pre_post_slug %}
+		         <li class="previous"><a href="{% block lat_page_url %}{% url 'blog:post' pre_post_slug %}{% endblock %}">&larr; Newer Post</a></li>
+		      {% endif %}
+		     {% if  next_post_slug %}
+		         <li class="next"><a href="{% block next_page_url %}{% url 'blog:post' next_post_slug %}{% endblock %}">Older Post &rarr;</a></li>
+		     {% endif %}
+		</ul>
+		</article>
+      
+
+      <div class="box-heading">
+      	<h4> SIMILAR RESOURCES</h4>
+      	<span></span>
+      </div>
+
+      <div class="row">
+		<div class="col-md-6">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<h2>{{post.title}}</h2>
+							<span>——<em>{{post.pub_date|date:"Y-m-d"}}</em>——</span>
+							<p>{{post.content}}</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-6" >
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<h2>{{post.title}}</h2>
+							<span>——<em>{{post.pub_date|date:"Y-m-d"}}</em>——</span>
+							<p>{{post.content}}</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+    </div> 
+{% endblock %}

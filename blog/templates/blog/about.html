@@ -1,0 +1,40 @@
+{% extends "blog/base_site.html" %}
+
+{% load staticfiles %}
+
+{% block meta %}
+    <meta name="author" content="{{ post.author }}">
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/about.css' %}">
+{% endblock %}
+
+{% block body %}
+ <div class="post-container">
+
+        
+	        <header class="post-prim">
+				<h2>关于我</h2>
+				<p>就读于NCU,自动化专业，迷途知返，转战码农,考研狗一枚</p>	
+			</header>
+			<h3>技能树</h3>
+			<p>喜欢编程，想做的方向为模式识别却执意跨考计算机，因为我觉得计算机数据结构、操作系统、计算机网络相比自控、线控用的范围要广，顺便push自己跳出舒适圈，去大胆学习新的领域和编程的思想，所以选择了对新人比较友好的python.</p>
+			<ul>
+				<li>python, c, matlab还算熟悉,用过spss, Eviews等数据分析软件。</li>
+				<li>Python较为熟悉django框架，爬虫scrapy框架，数据处理numpy, matplotlib, pandas学（zhe) 习(teng)过。</li>
+				<li>大三做过数学建模，对于基础的算法如PCA， SVM， AR， K-MEANS聚类， BP神经网络略懂一二。</li>
+				<li>希望研究生能够做模式识别，NLP等机器学习方向（关键是得考上研究生啊摔！！！）</li>
+			</ul>
+			<h3>爱好</h3>
+			<ul>
+				<li>电影爱好者，最喜欢王家卫《2046》.</li>
+				<li>读书啊，最近工具书读的比较多，ORZ，最近没时间读文学书了。</li>
+				<li>没事的时候喜欢睡觉，天生睡眠不足，树懒哈哈哈哈。</li>
+			</ul>
+			
+		</article>
+</div>
+
+{% endblock %}
+
